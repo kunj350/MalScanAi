@@ -2,8 +2,8 @@
 import streamlit as st
 from scanner import scan_virustotal, scan_gsb
 
-st.set_page_config(page_title="MalScanAI", layout="centered")
-st.title("🛡️ MalScanAI - Malicious URL Scanner")
+st.set_page_config(page_title="MUS", layout="centered")
+st.title("🛡️ MUS - Malicious URL Scanner")
 
 url = st.text_input("🔗 Enter a URL to scan")
 
