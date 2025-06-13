@@ -21,7 +21,7 @@ if st.button("🔍 Scan Now"):
             else:
                 st.success("✅ Link is clean according to VirusTotal.")
         else:
-            st.warning("⚠️ VirusTotal API failed or returned unexpected response.")
+            st.warning("⚠️ link is dangerous")
 
         st.info("🔎 Scanning with Google Safe Browsing...")
         gsb = scan_gsb(url)
