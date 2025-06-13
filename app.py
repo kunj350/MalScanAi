@@ -13,29 +13,25 @@ if st.button("🔍 Scan Now"):
     else:
         st.info("🔎 Scanning with VirusTotal...")
         vt = scan_virustotal(url)
-
-        if "data" in vt and "attributes" in vt["data"] and "last_analysis_stats" in vt["data"]["attributes"]:
-            stats = vt["data"]["attributes"]["last_analysis_stats"]
-            if stats["malicious"] > 0:
+        if"error" in vt:
+            st.error("virus total api failed or returned unexpected response")
+        elif"data" in vt and "attributes: in vt["data"]:
+            stats= vt["data"][attributes"]["stats"]:
+            if stats.get("malicious",0)>0:
                 st.error("🚨 Link is DANGEROUS! VirusTotal found malicious content.")
             else:
-                st.success("✅ Link is clean according to VirusTotal.")
+                st.success("no malicious activity found")
+            st.json(vt)    
         else:
-            st.warning("⚠️ link is dangerous")
+            st.error("unexpected virustotal response")
 
         st.info("🔎 Scanning with Google Safe Browsing...")
         gsb = scan_gsb(url)
         if "matches" in gsb:
             st.error("🚨 Google Safe Browsing detected a threat!")
-        else:
-            st.success("✅ No threat found (Google Safe Browsing)")
-
-
-        st.info("🧪 Scanning with Google Safe Browsing...")
-        gsb = scan_gsb(url)
-
-        if "matches" in gsb:
-            st.error("🚨 Google Safe Browsing detected a threat!")
             st.json(gsb)
         else:
             st.success("✅ No threat found (Google Safe Browsing)")
+
+
+        
