@@ -16,7 +16,7 @@ if st.button("🔍 Scan Now"):
         if"error" in vt:
             st.error("virus total api failed or returned unexpected response")
     elif "data" in vt and "attributes" in vt["data"]:
-            stats= vt["data"][attributes"]["stats"]
+            stats= vt["data"]["attributes"]["stats"]
             if stats.get("malicious",0)>0:
                 st.error("🚨 Link is DANGEROUS! VirusTotal found malicious content.")
             else:
