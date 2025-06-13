@@ -4,8 +4,8 @@ import os
 from dotenv import load_dotenv
 
 load_dotenv()
-VT_API_KEY = os.getenv("VT_API_KEY")
-GSB_API_KEY = os.getenv("GSB_API_KEY")
+VT_API_KEY = st.secrets("VT_API_KEY")
+GSB_API_KEY = st.secrets ("GSB_API_KEY")
 
 def scan_virustotal(url):
     headers = {"x-apikey": VT_API_KEY}
